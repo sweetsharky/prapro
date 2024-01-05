@@ -1,13 +1,33 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.forms import inlineformset_factory #a way to create multiple forms inside one form
+from django.contrib.auth.forms import UserCreationForm
 
 from .models import *
-from .forms import OrderForm
+from .forms import OrderForm, CreateUserForm
 
 from .filters import OrderFilter
 
 # Create your views here.
+
+def registerPage(request):
+    form = CreateUserForm()
+    
+    if request.method == 'POST':
+        form = CreateUserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+        
+    context = {'form': form}
+    return render(request, 'mitarbeiter/register.html', context)
+
+
+def loginPage(request):
+    context = {}
+    return render(request, 'mitarbeiter/login.html', context)
+
+
 
 def home(request):
     orders = Order.objects.all()
@@ -23,6 +43,8 @@ def home(request):
     context = {'orders' : orders, 'customers' : customers, 'total_orders': total_orders, 'delivered': delivered, 'pending': pending}
 
     return render(request, 'mitarbeiter/dashboard.html', context )
+
+
 
 def mitarbeiter(request, pk):
     customer = Customer.objects.get(id=pk)

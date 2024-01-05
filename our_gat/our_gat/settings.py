@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     
     'mitarbeiter',
     'django_filters',
+    'kalender',
 ]
 
 MIDDLEWARE = [
