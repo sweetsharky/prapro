@@ -1,0 +1,16 @@
+#logo{}
+
+body{
+    background-color: #ebeff5;
+}
+
+#to-do{
+    background-color: #4cb4c7;
+}
+
+#doing{
+    background-color: #7abecc;
+}
+#done{
+    background-color: #7CD1C0;
+}

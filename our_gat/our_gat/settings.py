@@ -39,9 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
-    'mitarbeiter',
-    'django_filters',
+    'bootstrap5',
+    'widget_tweaks',
+
     'kalender',
+
 ]
 
 MIDDLEWARE = [
